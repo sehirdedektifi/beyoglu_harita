@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:fixed; top:0; bottom:0; width:50%; }
+        
+        img { max-width: 100%; height: auto;}
+    </style>
+</head>
+<body>
+
+<style>
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif; /*change font*/
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+}
+section.active {
+    opacity: 1;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 400px;
+}
+</style>
+ 
+<div id='map'></div>
+<div id='features'>
+    <section id='intro' class='active'>
+        <h3>MAP OF MEMORY</h3> 
+        <p>Explore the Sites of Memory of the War and experience them through people's stories.<br>
+<br>These stories combine to create an account of the past, critical to healing the wounds of war. 
+ </p>
+    </section>
+    <section id='bachoura'>
+        <h3>Bachoura</h3>
+        <img src="http://uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Bachoura by cdn3_Fotor.jpg">
+        <p>It is reported that many of those who were abducted—Muslims and Christians—were executed. 
+            This event, also known as Black Thursday, marked the beginning of widespread sectarian based abductions.</p>
+        <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/bashura" target="_blank" rel="">Click here for more</a></p>
+    </section>
+    
+     <section id='portdistrict'>
+        <h3>Port District</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Saifi-Blog Baladi_Fotor.jpg">
+         <br><small id="citation"><i>Blog Baladi</i></small>
+         <p>It is reported that 300 people were kidnapped that day. Their fates
+             remain unknown.&nbsp;This event came to be known as “Black Saturday”.</p>
+<p><a href="http://mapofmemorylebanon.webflow.io/en/sites/port" target="_blank" rel="">Click here for more</a></p>
+    </section>
+    
+    <section id='karantina'>
+        <h3>Karantina</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/rsz_karantina_photo4.jpg">
+        
+        <p><strong>“</strong><em>On that day, a lot of people died. They dug a big hole and they buried them all at once.
+        Their bodies were never returned to their families; neither my brother’s body
+        nor my aunt’s body nor my grandmother’s body were ever returned or even found. No one ever returned.</em>”
+            - Abu Mohammad, Resident of the area of Karantina </p>
+<p><a href="http://mapofmemorylebanon.webflow.io/en/sites/karantina" target="_blank" rel="">Click for more</a></p>
+    </section>
+    
+    <section id='damour'>
+        <h3>Damour</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/rsz_damour_photo1.jpg">
+        <p><span><em>"How can we forget what happened? We knew the Palestinians and Muslim forces were coming. It was our last night here. 
+            We had no time to take our belongings. In the church, 450 of us spent the night. "</em> - Georges, Survivor&nbsp;</span></p>
+        <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/damour" target="_blank" rel="">Click here for more:&nbsp;</a></p>
+         </section>
+         
+    <section id='talelzaatar'>
+    <h3>Tal el Zaatar</h3>
+    <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg">
+    <p> &nbsp;On August 12, 1976, it is estimated that between
+1,000 and 1,500 Palestinians were killed; some were summarily executed and
+        other were kidnapped while fleeing towards West Beirut.</p>
+<p><a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Click here for more</a></p>
+    </section>
+        
+    <section id='barbir'>
+    <h3>Barbir</h3>
+    <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/barbir_Fotor.jpg">
+    <p><span><a target="" rel=""></a>“<em>A bomb landed here once inside the
+        store and two customers died. They were two women, both of whom were medical
+        doctors. Nothing was left of them, but their shoes; just one shoe for each of
+        the two women actually</em>” - Abu Khaled, resident of Barbir neighborhood</span></p>
+        <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/barbir" target="_blank" rel="">Click here for more</a></p>
+    </section>
+    
+        <section id='mathaf'>
+            <h3>Mathaf</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Musuem - PHOTOGRAPH BY MAHER ATTAR SYGMA VIA GETTY_Fotor.jpg">
+            <p>“<span><em>Once you reached the area of Mathaf, similar to any other area located
+                on any demarcation line; you will be met with battles, death and destruction</em>” -
+                Elias, Former Combatant with Kataeb</span></p>
+                <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/mathaf" target="_blank" rel="">Click here for more:&nbsp;</a></p>
+        </section>
+    
+    <section id='airportroad'>
+            <h3>Airport Road</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Airport road - Photo by Mahmoud Kheir_Fotor.jpg">
+            <p>Multiple checkpoints were established on several occasions leading to the kidnapping and disappearance of hundreds of people.</p>
+            <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/airport-road" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="burjelmurr">
+            <h3>Burj el Murr</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/lebanon_beirut_tallest_abandoned_Fotor.jpg">
+            <p>“<em>I look at this new generation, how
+                they are carefree and wonder to myself if they know what happened here and
+                where they are stepping or dancing right now? Where they are parking their
+                cars? Where… Our generation remembers every little thing that happened in any
+                corner. There are ghosts everywhere for us</em>” -&nbsp;
+                Aline, photographer for Reuters from 1983 to 1989</p>
+                <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/burj-el-mur" target="_blank" rel="">Click here for more</a></p>
+        </section>
+    
+       <section id="americanschool">
+            <h3>American School</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/American School Photo3_Fotor.jpg">
+            <p><em>“There was a popular saying: “those who are admitted (to the school) are bygones, and those who manage to leave (the school) are born again”. </em>Khalil, Resident of the neighborhood</p>
+              <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/american-school" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="barbara">
+            <h3>Barbara</h3>
+            <p>Many civilians were kidnapped at the Barbara checkpoint. It is at this
+                checkpoint that, on July 4, 1982, according to Lebanese media, four Iranian
+                diplomats - Ahmad Motevaselian, Seyyed Mohsen Mousavi, Taqi Rastegar Moqaddam,
+                and Kazem Akhavan - were abducted.</p>
+                <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/barbara" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="sabra">
+            <h3>Sabra and Shatila</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/al safir_Fotor.jpg">
+            <br><small id="citation"><i>Al Safir</i></small>
+            <p>Survivors reported that family members
+                including women and children were crammed into trucks by militiamen and taken
+                to unknown destinations. These people were never seen again. More than 2,000
+                unidentified bodies were buried in mass graves.</p>
+            <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/sabra-and-shatila" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="gathering">
+            <h3>Gathering of the Families</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Protest of families of missing 1984 Beirut - Photo by righttoknow_Fotor.jpg">
+            <p>On November 17, 1982, families who lacked information on the whereabouts
+                of their relatives&nbsp;gathered for the ﬁrst time at Corniche el Mazraa,
+                Beirut. Hundreds of people, mostly women, gathered after the call of Wadad
+                Halwani, whose husband Adnan, had been abducted.</p>
+                <p><a href="http://mapofmemorylebanon.webflow.io/en/sites/gathering-families" target="_blank" rel="">Click here for more</a></p>
+        </section>
+    
+        <section id="aley">
+            <h3>aley</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Aley - Photo by dreamstime_Fotor.jpg">
+            <br><small id="citation"><i>ACT</i>Abandoned building complex in Aley today.</small>
+            <p><strong>“</strong>W<span><em>hen I walk there […] I start thinking to myself:
+                their bodies are buried on the top of the mountain; their bodies are buried
+                somewhere around here. So, if I see a flower standing at a certain place, I
+                immediately think to myself: maybe their bones lay beneath here.</em>” -- Suhad,
+                wife of Salem Karam, disappeared in 1983 in the area of Aley.</span></p>
+        </section>
+
+        <section id="khiam">
+            <h3>Khiam></h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Khiam Denten Center - Electronicintifad_Fotor.jpg">
+            <p>Khiam was the main detention facility inside
+                Lebanon where the prisoners were detained before being transferred to Israel.<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/khiam" target="_blank" rel="">Click here for more</a>
+            </p>
+        </section>
+
+        <section id="basta">
+            <h3>Basta</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Basta - Photo by Mohammad k_Fotor.jpg">
+            <p>&nbsp;In 1985, Hezbollah used a building located on
+                Basta street, the Fathallah Barrack, as a detention center where many
+                individuals, both Lebanese and foreigners, were detained and interrogated.<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/basta" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="centralbank">
+            <h3>Central Bank</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/central-bank-aljoumhouria_Fotor_Fotor.jpg">
+            <p>Dozens of people were kidnapped and detained at
+                these checkpoints, most notably the three central bank executives and directors
+                whom were kidnapped on August 19th, 1985, never to be seen
+                again.&nbsp;&nbsp; <br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/central-bank" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="corniche">
+            <h3>Corniche el Mazraa</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Corniche el Mazraa 2 - blogspot_Fotor.jpg">
+            <p>On August 19th, 1985, 30 people were
+                kidnapped at one of these checkpoints. Some were later released the same day
+                while others remain missing to this day.<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/corniche-el-mazraa" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="anjar">
+            <h3>Anjar</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Anjar 2 - ACT_Fotor_Fotor.jpg">>
+
+            <p>People kidnapped by Syrian forces and its allies
+                were first held in detention centers present all over the territory and
+                prisoners who survived interrogations or weren’t released were transferred to
+                Anjar detention center, the last stop inside Lebanon before being extra-judicially
+                transferred into Syrian jails and kept secretly detained.&nbsp;<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/anjar" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="march">
+            <h3>March of Peace</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/March of Peace - Photo by iphu_Fotor.jpg">
+            <p>“<span><em>During the war, there
+                was no way you could’ve crossed a checkpoint without showing your
+                identification card. We were the first to break those checkpoints and cross
+                through without any of the militias asking us of any identification cards</em>” - Jahda
+                Abou Khalil, Co-founder of the March of Peace</span>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/march-for-peace" target="_blank" rel="">Click here for more:&nbsp;</a></p>
+        </section>
+
+        <section id="beaurivage">
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Beau Rivage - ACT_Fotor.jpg">
+            Most of those who weren’t released were later sent to
+            the Syrian Main Intelligence Headquarters in Anjar before being transferred to
+            Syria where they would be detained in secret. The building was a feared symbol
+            of Syrian power in Lebanon.<br>
+            <a href="http://mapofmemorylebanon.webflow.io/en/sites/beau-rivage" target="_blank" rel="">Click here for more</a>
+        </section>
+
+        <section id="sednaya">
+            <h3>Sednaya Prison</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Sydnaya prison Syria - Photo by 78_Fotor.jpg">
+
+        </section>
+
+        <section id="tadmor">
+            <h3>Tadmor Prison</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tadmor Prison - Photo by middleeasteye.png">
+            <p>Lebanese citizens whom were detained by local militias allied with the
+                Syrian regime were reportedly transferred to prison in Syria. Family
+                associations and NGOs have documented over 600 such cases, with strong evidence
+                to support such claims including the testimonies of some former detainees who
+                were released over the years from Syrian prisons. <br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/tadmor" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="branch235">
+            <h3>Branch 235-Known as the Palestine branch</h3>
+            <p><span>Lebanese citizens whom were detained by local militias allied with the
+                Syrian regime were reportedly transferred to prison in Syria. Family
+                associations and NGOs have documented over 600 such cases, with strong evidence
+                to support such claims including the testimonies of some former detainees who
+                were released over the years from Syrian prisons. <br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/palestine-branch" target="_blank" rel="">Click here for more</a><br><br></span></p>
+        </section>
+
+        <section id="maaser">
+            <h3>Maaser Chouf</h3>
+            <p>In 1995, in the village of&nbsp;Maaser Chouf, human
+                remains&nbsp;were&nbsp;exhumed&nbsp;from two mass graves and placed in
+                a&nbsp;grave&nbsp;behind the local church.&nbsp;<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/maaser-chouf" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="yarze">
+            <h3>Yarze - Ministry of Defence</h3>
+
+            <p>On November 2005, seven months after the withdrawal of Syrian forces
+                from Lebanon, the remains of 24 military personnel were discovered on the
+                grounds of the Ministry of National Defense in Yarzeh.<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/yarze" target="_blank" rel="">Click here for more</a></p>
+        </section>
+
+        <section id="aita">
+            <h3>Aita al-Foukhar</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Location of Discovery-Alec Colett - Photo by alraimedia_Fotor.jpg">
+            <p><span>Collett’s remains were exhumed by a team of British experts working in
+                co-operation with the Lebanese authorities in the Bekaa Valley. A second body
+                was found at the site but the Lebanese authorities decided to rebury the
+                remains without conducting any identification.<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/aita-al-foukhar" target="_blank" rel="">Click here for more</a></span></p>
+        </section>
+
+        <section id="tahwita">
+            <h3>Tahwita Cemetery</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tahwita cemetery - Photo by angloamericancemeterybeirut_Fotor.jpg">
+            <p>"<em>Some of the bodies were buried in mass graves in the martyrs cemeteries in the area of Horsh in Beirut as well as in the cemetery of Mar Metr in Ashrafieh, and in the English cemetery in Tahwita. Some of the bodies were also thrown in the sea</em>". Official Report of the National Investigative Commission, 2000.<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/mar-mitr" target="_blank" rel="">Click here for more:&nbsp;</a></p>
+        </section>
+
+        <section id="marmitr">
+            <h3>Mar Mitr Cemetery</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Mar Mitr.jpg">
+            <p>"<em>Some of the bodies were buried in mass graves in the martyrs cemeteries in the area of Horsh in Beirut as well as in the cemetery of Mar Metr in Ashrafieh, and in the English cemetery in Tahwita. Some of the bodies were also thrown in the sea</em>". Official Report of the National Investigative Commission, 2000.<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/mar-mitr" target="_blank" rel="">Click here for more:&nbsp;</a></p>
+        </section>
+
+        <section id="horshbeirut">
+            <h3>Horsh Beirut</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Horsh cemetery 2 - photo by hello961 (1)_Fotor.jpg">
+            <p>"<em>Some of the bodies were buried in mass graves in the martyrs cemeteries in the area of Horsh in Beirut as well as in the cemetery of Mar Metr in Ashrafieh, and in the English cemetery in Tahwita. Some of the bodies were also thrown in the sea</em>". Official Report of the National Investigative Commission, 2000.<br>
+                <a href="http://mapofmemorylebanon.webflow.io/en/sites/horch" target="_blank" rel="">Click here for more:&nbsp;</a></p>
+        </section>
+
+        <section id="university">
+            <h3>Lebanese University Hadath</h3>
+            <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/LU_Hasan Shaaban_Daily Star _Fotor.jpg">
+            <small id="citation">
+            Github repo <a href='https://github.com/maptimeLA/storymap_tutorial'>Story Map Tutorial</a>
+        </small>
+    </section>
+    
+</div>
+    
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXNwZWwxNiIsImEiOiJjazFrcTFreWQxaWQwM25wNnB5OGtob2cyIn0.z-P2ljsucUiDSe9lpECDMA';
+
+//This function creates the map to load onto your web browser
+var map = window.map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/aspel16/cj4b7xltt480r2rnr34001yps',
+    center: [35.5039, 33.8915],
+    zoom: 6,
+    bearing: -17.6,
+    pitch: 45,
+    hash:true,
+    container: 'map',
+    antialias: true
+});    
+    
+// Display buildings in 3D
+    
+map.on('load', function() {
+// Insert the layer beneath any symbol layer.
+var layers = map.getStyle().layers;
+ 
+var labelLayerId;
+for (var i = 0; i < layers.length; i++) {
+if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+labelLayerId = layers[i].id;
+break;
+}
+}
+
+/* map.addLayer({
+'id': 'walks',
+'source': 'composite',
+'source-layer': 'walks'     
+}); */
+    
+map.addLayer({
+'id': 'locations',
+'source': 'composite',
+'source-layer': 'locations'    
+});
+    
+map.addLayer({
+'id': 'pins',
+'source': 'composite',
+'source-layer': 'pins'    
+});
+    
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['pins'] 
+  });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+    .addTo(map);
+});
+             
+map.addLayer({
+'id': '3d-buildings',
+'source': 'composite',
+'source-layer': 'building',
+'filter': ['==', 'extrude', 'true'],
+'type': 'fill-extrusion',
+'minzoom': 15,
+'paint': {
+'fill-extrusion-color': '#aaa',
+ 
+// use an 'interpolate' expression to add a smooth transition effect to the
+// buildings as the user zooms in
+'fill-extrusion-height': [
+"interpolate", ["linear"], ["zoom"],
+15, 0,
+15.05, ["get", "height"]
+],
+'fill-extrusion-base': [
+"interpolate", ["linear"], ["zoom"],
+15, 0,
+15.05, ["get", "min_height"]
+],
+'fill-extrusion-opacity': .6
+}
+}, labelLayerId);
+});
+    
+//This are the locations for your map to move along with your story
+//This is variable created an object called an JSON, you can add and remove chapters to the story. Make sure you reflect the changes in the sections with the text of your story.    
+var chapters = {
+    'intro': {
+        bearing: 0,
+        center: [35.503694, 33.892036],
+        zoom: 9.48,
+        bearing: 24.3,
+        pitch: 0,
+    },
+    'bachoura': {
+        duration: 6000,
+        center: [35.50395, 33.89158],
+        bearing: -30,
+        zoom: 15.5,
+        pitch: 30
+    },
+    'portdistrict': {
+        bearing: 0,
+        center: [35.517940, 33.897990],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+     'karantina': {
+        bearing: 0,
+        center: [35.534248, 33.898587],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'damour': {
+        bearing: 0,
+        center: [35.454854, 33.727302],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+     'talelzaatar': {
+        bearing: 0,
+        center: [35.549097, 33.869417],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'barbir': {
+        bearing: 0,
+        center: [35.499272, 33.895141],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'mathaf': {
+        bearing: 0,
+        center: [35.514936, 33.879109],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'airportroad': {
+        bearing: 0,
+        center: [35.497341, 33.834490],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'burjelmurr': {
+        bearing: 0,
+        center: [35.496697, 33.895532],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+     'americanschool': {
+        bearing: 0,
+        center: [35.83333, 34.43333],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'barbara': {
+        bearing: 0,
+        center: [35.816802, 34.402519],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+     'sabra': {
+        bearing: 0,
+        center: [35.500946, 33.869417],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'gathering': {
+        bearing: 0,
+        center: [35.499486, 33.878860],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'aley': {
+        bearing: 14.148182586771325,
+        center: [35.605659, 33.811102],
+        zoom: 14.693153872009281,
+        pitch: 0,
+        speed:0.5
+    },
+    'khiam': {
+        bearing: 0,
+        center: [35.612869, 33.335117],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'basta': {
+        bearing: 14.148182586771325,
+        center: [35.503842, 33.886502],
+        zoom: 14.693153872009281,
+        pitch: 0,
+        speed:0.5
+    },
+        'centralbank': {
+        bearing: 0,
+        center: [35.488929, 33.895889],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'corniche': {
+        bearing: 14.148182586771325,
+        center: [35.501375, 33.878681],
+        zoom: 14.693153872009281,
+        pitch: 0,
+        speed:0.5
+    },
+    'anjar': {
+        bearing: 0,
+        center: [35.928039, 33.732905],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'march': {
+        bearing: 14.148182586771325,
+        center: [36.077041, 34.551811],
+        zoom: 14.693153872009281,
+        pitch: 0,
+        speed:0.5
+    },
+    'beaurivage': {
+        bearing: 0,
+        center: [35.484960, 33.877096],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'sednaya': {
+        bearing: 0,
+        center: [36.329555, 33.668639],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+     'tadmor': {
+        bearing: 0,
+        center: [38.285379, 34.558526],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'branch235': {
+        bearing: 14.148182586771325,
+        center: [36.319599, 33.491875],
+        zoom: 14.693153872009281,
+        pitch: 0,
+        speed:0.5
+    },
+    'maaser': {
+        bearing: 0,
+        center: [35.670847, 33.667639],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'yarze': {
+        bearing: 0,
+        center: [35.553088, 33.842296],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'aita': {
+        bearing: 14.148182586771325,
+        center: [35.906410, 33.646206],
+        zoom: 14.693153872009281,
+        pitch: 0,
+        speed:0.5
+    },
+    'tahwita': {
+        bearing: 0,
+        center: [35.524329, 33.877301],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'marmitr': {
+        bearing: 0,
+        center: [35.521491, 33.890661],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'horshbeirut': {
+        bearing: 0,
+        center: [35.505194, 33.869631],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    },
+    'university': {
+        bearing: 0,
+        center: [35.522918, 33.829713],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+    }
+};
+
+    
+//Function to run the story    
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'intro'; //Change this to match the first chapter of your story
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    map.flyTo(chapters[chapterName]);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+//End of function to run the story    
+    
+
+//This JS Function asks Mapbox to get the bearing/center/zoom/pitch of the mouse position when clicked.
+//To turn off this function, add a "/*" at the beginning of the function and a "*/" at the end. This will turn the function into a comment.
+/* map.on('click', function (e) {
+    // e.lngLat is the longitude, latitude geographical position of the event
+    var loglatlng = e;
+    console.log(e);
+    prompt("Copy to clipboard: Ctrl+C, Enter",
+        "bearing: "+map.getBearing()+",\n"+
+        "center: ["+e.lngLat.lng+", "+e.lngLat.lat+"],\n"+
+        "zoom: "+map.getZoom()+",\n"+
+        "pitch: "+map.getPitch()
+        // <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/rsz_karantina_photo4.jpg">
+    );
+});  */  
+
+</script>
+
+</body>
+</html>
