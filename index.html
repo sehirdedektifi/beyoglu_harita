@@ -1,250 +1,315 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8' />
-    <title></title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css' rel='stylesheet' />
+  <head>
+    <meta charset="utf-8" />
+    <!-- <title></title> -->
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=PT+Sans"
       rel="stylesheet"
       type="text/css"
     />
     <style>
-        body { margin:0; padding:0; }
-        #map { position:fixed; top:0; bottom:0; width:50%; }
-        
-        img { max-width: 100%; height: auto;}
-    
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
       div {
         font-family: "PT Sans", sans-serif;
       }
+
+      #features {
+        width: 50%;
+        margin-left: 50%;
+        font-family: "PT Sans", sans-serif;
+        overflow-y: scroll;
+        background-color: #fafafa;
+      }
+      section {
+        padding: 25px 50px;
+        line-height: 25px;
+        border-bottom: 1px solid #ddd;
+        opacity: 0.25;
+        font-size: 13px;
+      }
+      section.active {
+        opacity: 1;
+      }
+      section:last-child {
+        border-bottom: none;
+        margin-bottom: 400px;
+      }
     </style>
-</head>
-<body>
+  </head>
 
-<style>
-#features {
-    width: 50%;
-    margin-left: 50%;
-    font-family: "PT Sans", sans-serif; /*change font*/
-    overflow-y: scroll;
-    background-color: #fafafa;
-}
-section {
-    padding:  25px 50px;
-    line-height: 25px;
-    border-bottom: 1px solid #ddd;
-    opacity: 0.25;
-    font-size: 13px;
-}
-section.active {
-    opacity: 1;
-}
-section:last-child {
-    border-bottom: none;
-    margin-bottom: 400px;
-}
-</style>
- 
-<div id='map'></div>
-<div id='features'>
-    <section id='intro' class='active'>
-        <h3>MAP OF MEMORY</h3> 
-        <p>Explore the Sites of Memory of the War and experience them through people's stories.<br>
-<br>These stories combine to create an account of the past, critical to healing the wounds of war. 
- </p>
-    </section>
-    <section id='bachoura'>
-        <h3>Bachoura</h3>
-        <img src="http://uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Bachoura by cdn3_Fotor.jpg">
-        <p>It is reported that many of those who were abducted—Muslims and Christians—were executed. 
-            This event, also known as Black Thursday, marked the beginning of widespread sectarian based abductions.</p>
-        <p><a href="https://pelinasa.wixsite.com/storymap/gezi-parki" target="_blank" rel="">Click here for more</a></p>
-    </section>
-    
-     <section id='portdistrict'>
-        <h3>Port District</h3>
-        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Saifi-Blog Baladi_Fotor.jpg">
-         <br><small id="citation"><i>Blog Baladi</i></small>
-         <p>It is reported that 300 people were kidnapped that day. Their fates
-             remain unknown.&nbsp;This event came to be known as “Black Saturday”.</p>
-<p><a href="http://mapofmemorylebanon.webflow.io/en/sites/port" target="_blank" rel="">Click here for more</a></p>
-    </section>
-    
-          
-    
-</div>
-    
-<script>
+  <body>
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXNwZWwxNiIsImEiOiJjazFrcTFreWQxaWQwM25wNnB5OGtob2cyIn0.z-P2ljsucUiDSe9lpECDMA';
+    <div id='map'></div> <!-- check -->
+        <div id='features'>
+        <section id='intro' class='active'>
+        <h3>Beyoğlu'nda Çocuk</h3>
+        <p> ** açıklama** </p>
 
-//This function creates the map to load onto your web browser
-var map = window.map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/aspel16/cj4ioen1738an2sqko3ebefoi',
-    center: [28.977505, 41.036864],
-    zoom: 6,
-    bearing: -17.6,
-    pitch: 45,
-    hash:true,
-    container: 'map',
-    antialias: true
-});    
-    
-// Display buildings in 3D
-    
-map.on('load', function() {
-// Insert the layer beneath any symbol layer.
-var layers = map.getStyle().layers;
- 
-var labelLayerId;
-for (var i = 0; i < layers.length; i++) {
-if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-labelLayerId = layers[i].id;
-break;
-}
-}
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
 
-/* map.addLayer({
-'id': 'walks',
-'source': 'composite',
-'source-layer': 'walks'     
-}); */
-    
-map.addLayer({
-'id': 'locations',
-'source': 'composite',
-'source-layer': 'locations'    
-});
-    
-map.addLayer({
-'id': 'pins',
-'source': 'composite',
-'source-layer': 'pins'    
-});
-    
-map.on('click', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['pins'] 
-  });
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
 
-  if (!features.length) {
-    return;
-  }
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
 
-  var feature = features[0];
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
 
-  var popup = new mapboxgl.Popup({ offset: [0, -15] })
-    .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
-    .addTo(map);
-});
-             
-map.addLayer({
-'id': '3d-buildings',
-'source': 'composite',
-'source-layer': 'building',
-'filter': ['==', 'extrude', 'true'],
-'type': 'fill-extrusion',
-'minzoom': 15,
-'paint': {
-'fill-extrusion-color': '#aaa',
- 
-// use an 'interpolate' expression to add a smooth transition effect to the
-// buildings as the user zooms in
-'fill-extrusion-height': [
-"interpolate", ["linear"], ["zoom"],
-15, 0,
-15.05, ["get", "height"]
-],
-'fill-extrusion-base': [
-"interpolate", ["linear"], ["zoom"],
-15, 0,
-15.05, ["get", "min_height"]
-],
-'fill-extrusion-opacity': .6
-}
-}, labelLayerId);
-});
-    
-//This are the locations for your map to move along with your story
-//This is variable created an object called an JSON, you can add and remove chapters to the story. Make sure you reflect the changes in the sections with the text of your story.    
-var chapters = {
-    'intro': {
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
+
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
+
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
+
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
+
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
+
+    <section id="gezi">
+        <h3>Gezi Parkı</h3>
+        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <p>tanım <br/></p>
+        <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
+      </section>
+    </div>
+
+      <script>
+
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYXNwZWwxNiIsImEiOiJjazFrcTFreWQxaWQwM25wNnB5OGtob2cyIn0.z-P2ljsucUiDSe9lpECDMA';
+
+    var map = window.map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/aspel16/ck45gz86a1y101dt6k13dbdzv',
+        center: [28.977505, 41.036864],
+        zoom: 6,
+        bearing: -17.6,
+        pitch: 45,
+        hash: true,
+        container: 'map',
+        antialias: true }
+    );
+
+    // SECTIONS
+    var chapters = {
+        'intro': {
         bearing: 0,
         center: [28.977505, 41.036864],
         zoom: 9.48,
         bearing: 24.3,
         pitch: 0,
-    },
-    'bachoura': {
+        },
+        'bachoura': {
         duration: 6000,
         center: [28.986663, 41.037972],
         bearing: -30,
         zoom: 15.5,
         pitch: 30
-    },
-    'portdistrict': {
+        },
+        'portdistrict': {
         bearing: 0,
         center: [28.984649, 41.034873],
         bearing: 0,
         zoom: 16,
         pitch: 0,
         speed: 0.3
-    }
-};
-
-    
-//Function to run the story    
-// On every scroll event, check which element is on screen
-window.onscroll = function() {
-    var chapterNames = Object.keys(chapters);
-    for (var i = 0; i < chapterNames.length; i++) {
-        var chapterName = chapterNames[i];
-        if (isElementOnScreen(chapterName)) {
-            setActiveChapter(chapterName);
-            break;
         }
+        'bachoura': {
+        duration: 6000,
+        center: [28.986663, 41.037972],
+        bearing: -30,
+        zoom: 15.5,
+        pitch: 30
+        },
+        'portdistrict': {
+        bearing: 0,
+        center: [28.984649, 41.034873],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+        }
+        'bachoura': {
+        duration: 6000,
+        center: [28.986663, 41.037972],
+        bearing: -30,
+        zoom: 15.5,
+        pitch: 30
+        },
+        'portdistrict': {
+        bearing: 0,
+        center: [28.984649, 41.034873],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+        }
+        'bachoura': {
+        duration: 6000,
+        center: [28.986663, 41.037972],
+        bearing: -30,
+        zoom: 15.5,
+        pitch: 30
+        },
+        'portdistrict': {
+        bearing: 0,
+        center: [28.984649, 41.034873],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+        }
+        'bachoura': {
+        duration: 6000,
+        center: [28.986663, 41.037972],
+        bearing: -30,
+        zoom: 15.5,
+        pitch: 30
+        },
+        'portdistrict': {
+        bearing: 0,
+        center: [28.984649, 41.034873],
+        bearing: 0,
+        zoom: 16,
+        pitch: 0,
+        speed: 0.3
+        }
+        };
+
+    // Display buildings in 3D
+    map.on('load', function() {
+
+    var layers = map.getStyle().layers;
+    var labelLayerId;
+        for (var i = 0; i < layers.length; i++) {
+            if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+                labelLayerId = layers[i].id; 
+                break; 
+    }}
+
+    if (!features.length) {
+    return; }
+
+    var feature = features[0];
+    var popup = new mapboxgl.Popup({ offset: [0, -15] })
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+        .addTo(map);
+    });
+
+    map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+        'fill-extrusion-color': '#aaa',
+        // use an 'interpolate' expression to add a smooth transition effect to the
+        // buildings as the user zooms in
+        'fill-extrusion-height': ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "height"]],
+        'fill-extrusion-base': ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "min_height"]],
+        'fill-extrusion-opacity': .6 }
+    }, labelLayerId);  
+
+    //Function to run the story
+    // On every scroll event, check which element is on screen
+    window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+        for (var i = 0; i < chapterNames.length; i++) {
+            var chapterName = chapterNames[i];
+                if (isElementOnScreen(chapterName)) {
+                    setActiveChapter(chapterName);
+                    break; }}
+    };
+    var activeChapterName = 'intro'; //Change this to match the first chapter of your story
+    function setActiveChapter(chapterName) {
+        if (chapterName === activeChapterName) return;
+        map.flyTo(chapters[chapterName]);
+        document.getElementById(chapterName).setAttribute('class', 'active');
+        document.getElementById(activeChapterName).setAttribute('class', '');
+        activeChapterName = chapterName;
     }
-};
-
-var activeChapterName = 'intro'; //Change this to match the first chapter of your story
-function setActiveChapter(chapterName) {
-    if (chapterName === activeChapterName) return;
-
-    map.flyTo(chapters[chapterName]);
-
-    document.getElementById(chapterName).setAttribute('class', 'active');
-    document.getElementById(activeChapterName).setAttribute('class', '');
-
-    activeChapterName = chapterName;
-}
-
-function isElementOnScreen(id) {
-    var element = document.getElementById(id);
-    var bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight && bounds.bottom > 0;
-}
-//End of function to run the story    
-    
-
-//This JS Function asks Mapbox to get the bearing/center/zoom/pitch of the mouse position when clicked.
-//To turn off this function, add a "/*" at the beginning of the function and a "*/" at the end. This will turn the function into a comment.
-/* map.on('click', function (e) {
-    // e.lngLat is the longitude, latitude geographical position of the event
-    var loglatlng = e;
-    console.log(e);
-    prompt("Copy to clipboard: Ctrl+C, Enter",
-        "bearing: "+map.getBearing()+",\n"+
-        "center: ["+e.lngLat.lng+", "+e.lngLat.lat+"],\n"+
-        "zoom: "+map.getZoom()+",\n"+
-        "pitch: "+map.getPitch()
-        // <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/rsz_karantina_photo4.jpg">
-    );
-});  */  
+    function isElementOnScreen(id) {
+        var element = document.getElementById(id);
+        var bounds = element.getBoundingClientRect();
+        return bounds.top < window.innerHeight && bounds.bottom > 0;
+    }
 
 </script>
 
