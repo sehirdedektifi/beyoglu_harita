@@ -75,13 +75,11 @@
         <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
       </section>
 
-    
-    </div>
-
       <script>
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiYXNwZWwxNiIsImEiOiJjazFrcTFreWQxaWQwM25wNnB5OGtob2cyIn0.z-P2ljsucUiDSe9lpECDMA';
 
+    // create the map
     var map = window.map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/aspel16/ck45gz86a1y101dt6k13dbdzv',
@@ -154,8 +152,6 @@
         }      
         };
 
-      
-
     //Function to run the story
     // On every scroll event, check which element is on screen
     window.onscroll = function() {
@@ -178,7 +174,7 @@
         var element = document.getElementById(id);
         var bounds = element.getBoundingClientRect();
         return bounds.top < window.innerHeight && bounds.bottom > 0;
-    }
+    };
 
 </script>
 
