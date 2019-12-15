@@ -5,18 +5,13 @@
     <title></title>
     <meta
       name="viewport"
-      content="initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
+      content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.js"></script>
-    <link
-      href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css" rel="stylesheet"/>
     <link
       href="https://fonts.googleapis.com/css?family=PT+Sans"
       rel="stylesheet"
-      type="text/css"
-    />
+      type="text/css" />
     <style>
       body {
         margin: 0;
@@ -77,14 +72,14 @@
 
     <section id="gezi">
         <h3>Gezi Parkı</h3>
-        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <img src=""/>
         <p>tanım <br/></p>
         <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
       </section>
 
     <section id="gezi">
         <h3>Gezi Parkı</h3>
-        <img src="//uploads.knightlab.com/storymapjs/fbb70813e6869662a52896a717be1b4e/sites-of-memory/_images/Tal el Zaatar - Photo by almashriq_Fotor.jpg"/>
+        <img src=""/>
         <p>tanım <br/></p>
         <a href="http://mapofmemorylebanon.webflow.io/en/sites/tal-el-zaatar" target="_blank" rel="">Okumaya devam et</a>
       </section>
@@ -143,7 +138,7 @@
 
       <script>
 
-      mapboxgl.accessToken = 'pk.eyJ1IjoiYXNwZWwxNiIsImEiOiJjazFrcTFreWQxaWQwM25wNnB5OGtob2cyIn0.z-P2ljsucUiDSe9lpECDMA';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXNwZWwxNiIsImEiOiJjazFrcTFreWQxaWQwM25wNnB5OGtob2cyIn0.z-P2ljsucUiDSe9lpECDMA';
 
     var map = window.map = new mapboxgl.Map({
         container: 'map',
@@ -248,21 +243,11 @@
 
     var layers = map.getStyle().layers;
     var labelLayerId;
-        for (var i = 0; i < layers.length; i++) {
-            if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-                labelLayerId = layers[i].id; 
-                break; 
+    for (var i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+            labelLayerId = layers[i].id; 
+            break; 
     }}
-
-    if (!features.length) {
-    return; }
-
-    var feature = features[0];
-    var popup = new mapboxgl.Popup({ offset: [0, -15] })
-        .setLngLat(feature.geometry.coordinates)
-        .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
-        .addTo(map);
-    });
 
     map.addLayer({
         'id': '3d-buildings',
@@ -278,12 +263,12 @@
         'fill-extrusion-height': ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "height"]],
         'fill-extrusion-base': ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "min_height"]],
         'fill-extrusion-opacity': .6 }
-    }, labelLayerId);  
+    }, labelLayerId); });  
 
     //Function to run the story
     // On every scroll event, check which element is on screen
     window.onscroll = function() {
-    var chapterNames = Object.keys(chapters);
+        var chapterNames = Object.keys(chapters);
         for (var i = 0; i < chapterNames.length; i++) {
             var chapterName = chapterNames[i];
                 if (isElementOnScreen(chapterName)) {
