@@ -64,7 +64,7 @@
     <div id='map'></div> 
         <div id='features'>
         <section id='intro' class='active'>
-        <h2>Beyoğlu'nda Çocuk</h2>
+        <h2>Beyoğlu'nda Çocuk 1</h2>
         <p> 
           Burası dünyanın eski yerleşimlerinden biri. Tarih boyunca pek çok farklı insan, Beyoğlu'nda yaşamış, 
           gezmiş, eğlenmiş ve oyunlar oynamış. Beyoğlu'ndan yolu geçenler, tozuna ayağı değenler hep hikayeler 
@@ -391,7 +391,9 @@
         document.getElementById(chapterName).setAttribute('class', 'active');
         document.getElementById(activeChapterName).setAttribute('class', '');
         activeChapterName = chapterName;
+        if (chapterName === 'esayan') map.style: 'mapbox://styles/aspel16/ck4vju9tm1lfx1dl7n0vaef2w';
     }
+    
     function isElementOnScreen(id) {
         var element = document.getElementById(id);
         var bounds = element.getBoundingClientRect();
