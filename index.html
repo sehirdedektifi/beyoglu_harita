@@ -64,7 +64,7 @@
     <div id='map'></div> 
         <div id='features'>
         <section id='intro' class='active'>
-        <h2>Beyoğlu'nda Çocuk 1234</h2>
+        <h2>Çocuklar için Beyoğlu</h2>
         <p> 
           Burası dünyanın eski yerleşimlerinden biri. Tarih boyunca pek çok farklı insan, Beyoğlu'nda yaşamış, 
           gezmiş, eğlenmiş ve oyunlar oynamış. Beyoğlu'ndan yolu geçenler, tozuna ayağı değenler hep hikayeler 
@@ -229,9 +229,23 @@
         'fill-extrusion-height': ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "height"]],
         'fill-extrusion-base': ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "min_height"]],
         'fill-extrusion-opacity': .6 }
-    }, labelLayerId); });
-        
-        
+    }, labelLayerId); 
+   
+    map.addSource('isaretler', {
+      type: 'FeatureCollection',
+      url: 'mapbox://mapbox.2opop9hr'
+      });    
+    map.addLayer({
+      'id': 'esayan',
+      'type': 'Feature',
+      'source': 'esayan',
+      'layout': {
+      'visibility': 'visible'
+      },
+      
+      'source-layer': 'esayan'
+      });    
+        });
     // SECTIONS
     var chapters = {
         'intro': {
@@ -379,7 +393,7 @@
     // On every scroll event, check which element is on screen
     window.onscroll = function() {
         var chapterNames = Object.keys(chapters);
-        for (var i = 0; i < chapterNames.length; i++) {
+        for (var i = 0; i <= chapterNames.length; i++) {
             var chapterName = chapterNames[i];
                 if (isElementOnScreen(chapterName)) {
                     setActiveChapter(chapterName);
@@ -392,7 +406,7 @@
         document.getElementById(chapterName).setAttribute('class', 'active');
         document.getElementById(activeChapterName).setAttribute('class', '');
         activeChapterName = chapterName;
-       if (chapterName == 'esayan') { map.setStyle("mapbox://styles/aspel16/ck4vju9tm1lfx1dl7n0vaef2w");}
+       
         
     }
         
