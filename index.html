@@ -64,7 +64,7 @@
     <div id='map'></div> 
         <div id='features'>
         <section id='intro' class='active'>
-        <h2>Çocuklar için Beyoğlu</h2>
+        <h2>Çocuklar için Beyoğlu LKJ</h2>
         <p> 
           Burası dünyanın eski yerleşimlerinden biri. Tarih boyunca pek çok farklı insan, Beyoğlu'nda yaşamış, 
           gezmiş, eğlenmiş ve oyunlar oynamış. Beyoğlu'ndan yolu geçenler, tozuna ayağı değenler hep hikayeler 
@@ -398,8 +398,10 @@
         document.getElementById(chapterName).setAttribute('class', 'active');
         document.getElementById(activeChapterName).setAttribute('class', '');
         activeChapterName = chapterName;
-       
-        if (chapterName == 'esayan') { map.addLayer({
+        
+    };
+        
+    if (chapterName == 'esayan') { map.addLayer({
       'id': 'esayan',
       'type': 'fill',
       'source': {
@@ -512,19 +514,13 @@
       }
       }); }
       else if (chapterName != 'esayan'){ map.removeLayer('esayan'); } 
-      else if (chapterName != 'ataturk'){ map.removeLayer('ataturk'); }  
-        
-        
-        
-        
-        
-    }
+      else if (chapterName != 'ataturk'){ map.removeLayer('ataturk'); };     
 
     function isElementOnScreen(id) {
         var element = document.getElementById(id);
         var bounds = element.getBoundingClientRect();
         return bounds.top < window.innerHeight && bounds.bottom > 0;
-    };
+    }
 
 </script>
 
