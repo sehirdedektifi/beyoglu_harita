@@ -399,9 +399,7 @@
         document.getElementById(activeChapterName).setAttribute('class', '');
         activeChapterName = chapterName;
         
-    };
-        
-    if (activeChapterName == 'esayan') { map.addLayer({
+      if (activeChapterName == 'esayan') { map.addLayer({
       'id': 'esayan',
       'type': 'fill',
       'source': {
@@ -453,7 +451,7 @@
       'fill-opacity': 0.7
       }
       }); }
-      else if (chapterName == 'ataturk') { map.addLayer({
+      else if (activeChapterName == 'ataturk') { map.addLayer({
       'id': 'ataturk',
       'type': 'fill',
       'source': {
@@ -513,8 +511,12 @@
       'fill-opacity': 0.7
       }
       }); }
-      else if (chapterName != 'esayan'){ map.removeLayer('esayan'); } 
-      else if (chapterName != 'ataturk'){ map.removeLayer('ataturk'); };     
+      else if (activeChapterName != 'esayan'){ map.removeLayer('esayan'); } 
+      else if (activeChapterName != 'ataturk'){ map.removeLayer('ataturk'); };  
+      
+    };
+        
+       
 
     function isElementOnScreen(id) {
         var element = document.getElementById(id);
