@@ -64,7 +64,7 @@
     <div id='map'></div> 
         <div id='features'>
         <section id='intro' class='active'>
-        <h2>Çocuklar için Beyoğlu</h2>
+        <h2>Çocuklar için Beyoğlu huj</h2>
         <p> 
           Burası dünyanın eski yerleşimlerinden biri. Tarih boyunca pek çok farklı insan, Beyoğlu'nda yaşamış, 
           gezmiş, eğlenmiş ve oyunlar oynamış. Beyoğlu'ndan yolu geçenler, tozuna ayağı değenler hep hikayeler 
@@ -378,7 +378,7 @@
     // On every scroll event, check which element is on screen
     window.onscroll = function() {
         var chapterNames = Object.keys(chapters);
-        for (var i = 0; i < chapterNames.length+1; i++) {
+        for (var i = 0; i < chapterNames.length+2; i++) {
             var chapterName = chapterNames[i];
                 if (isElementOnScreen(chapterName)) {
                     setActiveChapter(chapterName);
@@ -392,7 +392,7 @@
         document.getElementById(activeChapterName).setAttribute('class', '');
         activeChapterName = chapterName;
        
-        if (chapterName == esayan) { map.addLayer({
+        if (chapterName === esayan) { map.addLayer({
       'id': 'esayan',
       'type': 'fill',
       'source': {
