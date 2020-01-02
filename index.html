@@ -233,8 +233,8 @@
         'fill-extrusion-opacity': .6 }
     }, labelLayerId); 
       
-      function highlightArea(name) {
-      map.setFilter('highlight', ['==', 'stopName', name]); };
+     function highlightArea(name) {
+     map.setFilter('highlight', ['==', 'stopName', name]); }
    
      map.addLayer(
     {
@@ -506,7 +506,7 @@
         document.getElementById(activeChapterName).setAttribute('class', '');
         activeChapterName = chapterName;
       
-        highlightArea(activeChapterName);
+        
     };
     
     function isElementOnScreen(id) {
