@@ -177,6 +177,13 @@
         <a href="https://sehirdedektifi.wixsite.com/hafizaharitasi/karakoy" target="_blank" rel="">Okumaya devam et</a>
       </section>
           
+           <section id="karakoy">
+             <h3> <span class="fin"> son </span> </h3>
+     
+        <p><span class="fin"> son </span></p>
+        
+      </section>
+          
      
           
     </div>
@@ -378,7 +385,7 @@
     // On every scroll event, check which element is on screen
     window.onscroll = function() {
         var chapterNames = Object.keys(chapters);
-        for (var i = 0; i < chapterNames.length+2; i++) {
+        for (var i = 0; i < chapterNames.length; i++) {
             var chapterName = chapterNames[i];
                 if (isElementOnScreen(chapterName)) {
                     setActiveChapter(chapterName);
@@ -392,7 +399,7 @@
         document.getElementById(activeChapterName).setAttribute('class', '');
         activeChapterName = chapterName;
        
-        if (chapterName === esayan) { map.addLayer({
+        if (chapterName == 'esayan') { map.addLayer({
       'id': 'esayan',
       'type': 'fill',
       'source': {
