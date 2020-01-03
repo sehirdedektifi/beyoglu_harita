@@ -64,7 +64,7 @@
     <div id='map'></div> 
         <div id='features'>
         <section id='intro' class='active'>
-        <h2>Çocuklar için Beyoğlu</h2>
+        <h2>Çocuklar için Beyoğlu 12</h2>
         <p> 
           Burası dünyanın eski yerleşimlerinden biri. Tarih boyunca pek çok farklı insan, Beyoğlu'nda yaşamış, 
           gezmiş, eğlenmiş ve oyunlar oynamış. Beyoğlu'ndan yolu geçenler, tozuna ayağı değenler hep hikayeler 
@@ -510,7 +510,7 @@
       }); 
       map.removeLayer('esayan');
       }
-      else if (activeChapterName != 'ataturk') { map.removeLayer('ataturk'); }
+      else if (activeChapterName == 'tarlabasi') { map.removeLayer('ataturk'); }
 
       else if (activeChapterName == 'ttm' ) { map.addLayer({
       'id': 'ttm',
@@ -679,7 +679,7 @@
       map.removeLayer('galatasaray');
       }
 
-      else if (activeChapterName != 'postacilar') { map.removeLayer('postacilar'); }
+      else if (activeChapterName == 'kumbaraci') { map.removeLayer('postacilar'); }
 
       else if (activeChapterName == 'sur' ) { map.addLayer({
       'id': 'sur',
@@ -811,7 +811,7 @@
       }); 
       map.removeLayer('sur');
       }
-      else if (activeChapterName != 'kamondo') { map.removeLayer('kamondo'); }
+      else if (activeChapterName == 'karakoy') { map.removeLayer('kamondo'); }
       else return
       
     };
