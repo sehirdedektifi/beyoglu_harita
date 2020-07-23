@@ -213,6 +213,9 @@
         container: 'map',
         antialias: true }
     );
+       var marker = new mapboxgl.Marker()
+       .setLngLat([12.550343, 55.665957])
+       .addTo(map);
 
     // Display buildings in 3D
     map.on('load', function() {
